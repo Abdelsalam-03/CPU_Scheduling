@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-
 import model.DemotionSnapshot;
 import model.Process;
 import model.ProcessResult;
@@ -226,6 +225,12 @@ public class ACSScheduler extends Scheduler {
     }
 
     protected SchedulerSnapshot createSnapshot(SimulationResult result) {
+        QueueSnapshot arrivingSnapshot = new QueueSnapshot(
+                "0",
+                "Tier 1",
+                pendingProcesses.snapshot()
+        );
+
         QueueSnapshot tier1Snapshot = new QueueSnapshot(
                 "1",
                 "Tier 1",
@@ -243,13 +248,14 @@ public class ACSScheduler extends Scheduler {
                 status,
                 runningProcess,
                 isPreemptiveProcess ? "Tier 1" : "Tier 2",
-                List.of(tier1Snapshot, tier2Snapshot),
+                List.of(arrivingSnapshot, tier1Snapshot, tier2Snapshot),
                 demotedProcesses,
                 result
         );
     }
 
     protected SchedulerSnapshot createFinalSnapshot(SimulationResult result) {
+        status = SchedulerStatus.COMPLETED;
         return createSnapshot(result);
     }
 

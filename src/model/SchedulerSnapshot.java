@@ -25,7 +25,7 @@ public class SchedulerSnapshot {
     ) {
         this.tick = tick;
         this.status = status;
-        this.runningProcess = runningProcess;
+        this.runningProcess = runningProcess == null ? null : new Process(runningProcess);
         this.runningQueueId = runningQueueId;
         this.queues = List.copyOf(queues);
         this.demotions = List.copyOf(demotions);

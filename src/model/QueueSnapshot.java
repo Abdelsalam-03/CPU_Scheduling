@@ -15,7 +15,7 @@ public class QueueSnapshot {
     ) {
         this.id = id;
         this.name = name;
-        this.processes = List.copyOf(processes);
+        this.processes = processes.stream().map(Process::new).toList();
     }
 
 }

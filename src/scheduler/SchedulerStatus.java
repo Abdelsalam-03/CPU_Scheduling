@@ -3,5 +3,6 @@ package scheduler;
 public enum SchedulerStatus {
     PROCESSING,
     IDLE,
-    SWITCHING
+    SWITCHING,
+    COMPLETED
 }

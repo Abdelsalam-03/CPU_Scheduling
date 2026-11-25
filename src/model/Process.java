@@ -22,6 +22,13 @@ public class Process {
         completedAt = -1;
     }
 
+    Process(Process source) {
+        this(source.processId, source.arrivalTime, source.burstTime, source.priority);
+        remainingTime = source.remainingTime;
+        completedAt = source.completedAt;
+        completed = source.completed;
+    }
+
     public String getProcessId() {
         return processId;
     }

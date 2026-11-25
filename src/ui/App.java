@@ -1,10 +1,8 @@
 package ui;
 
-import javax.swing.*;
-
-import model.SchedulerConfiguration;
-
 import java.awt.CardLayout;
+import javax.swing.*;
+import model.SchedulerConfiguration;
 
 public class App extends JFrame {
 
@@ -24,8 +22,6 @@ public class App extends JFrame {
                 "configuration"
         );
 
-        pages.add(new JPanel(), "next");
-
         setContentPane(pages);
 
         cardLayout.show(pages, "configuration");
@@ -35,7 +31,10 @@ public class App extends JFrame {
             SchedulerConfiguration configuration
     ) {
         this.configuration = configuration;
-
-        cardLayout.show(pages, "next");
+        pages.add(
+                new SimulationPage(configuration),
+                "simulation"
+        );
+        cardLayout.show(pages, "simulation");
     }
 }

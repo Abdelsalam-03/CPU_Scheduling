@@ -1,6 +1,6 @@
 
-import ui.App;
 import javax.swing.SwingUtilities;
+import ui.App;
 
 public class Main {
 
